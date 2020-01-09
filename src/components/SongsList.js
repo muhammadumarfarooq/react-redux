@@ -1,6 +1,6 @@
 import React from "react";
 import SongListItem from "./SongListItem";
-
+import { connect } from "react-redux";
 const SongsList = ({ songsList, setSong }) => {
   return (
     <div>
@@ -22,4 +22,4 @@ const style = {
   alignItems: "center"
 };
 
-export default SongsList;
+export default connect()(SongsList);
