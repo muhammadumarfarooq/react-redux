@@ -1,13 +1,14 @@
 import React from "react";
-import SongListItem from "./SongListItem";
+// import SongListItem from "./SongListItem";
+import { selectSong } from "../actions";
 import { connect } from "react-redux";
-const SongsList = ({ songsList, setSong }) => {
+const SongsList = ({ songs, selectSong }) => {
   return (
     <div>
-      {songsList.map(song => (
-        <div style={style}>
+      {songs.map(song => (
+        <div key={song.title} style={style}>
           <h3>{song.title.toUpperCase()}</h3>
-          <button onClick={() => setSong(song)}>Select</button>
+          <button onClick={() => selectSong(song)}>Select</button>
         </div>
       ))}
 
@@ -22,4 +23,10 @@ const style = {
   alignItems: "center"
 };
 
-export default connect()(SongsList);
+const mapStateToProps = state => {
+  return {
+    songs: state.songs
+  };
+};
+
+export default connect(mapStateToProps, { selectSong })(SongsList);
