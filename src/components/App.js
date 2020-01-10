@@ -1,33 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import SongsList from "./SongsList";
 import SelectedSong from "./SelectedSong";
 const App = () => {
-  const [songsList] = useState([
-    { title: "abc", length: 1 },
-    { title: "xyz", length: 100 },
-    { title: "dfc", length: 5 },
-    { title: "Sun Raha hai na tu", length: 5000 }
-  ]);
-  const [selectedSong, setSelectedSong] = useState(null);
-
-  const setSong = song => {
-    setSelectedSong(song);
-  };
-
   return (
     <div style={style}>
-      <SongsList setSong={setSong} songsList={songsList} />
-      {selectedSong !== null ? (
-        <SelectedSong selectedSong={selectedSong} />
-      ) : (
-        undefined
-      )}
-      {selectedSong === null ? (
-        <h1>Select A song to see it here...</h1>
-      ) : (
-        undefined
-      )}
+      <div>
+        <SongsList />
+      </div>
+      <SelectedSong />
     </div>
   );
 };
